@@ -29,7 +29,7 @@ const uri = process.env.HOST_DB || "mongodb://localhost:27017/meetingdb";
 mongoose.connect(uri);
 
 // socketjs
-const io = new Server({
+const io = new Server(httpServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -61,6 +61,6 @@ app.get("/api/test", (req, res) => {
 });
 
 //socket listent
-io.listen(parseInt(SOCKET_PORT.toString()));
+// io.listen(parseInt(SOCKET_PORT.toString()));
 //server listent
 httpServer.listen(PORT, () => console.log("listen on port " + PORT));
