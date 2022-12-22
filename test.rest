@@ -1,0 +1,410 @@
+//Quiz Management
+//create quiz
+POST http://localhost:3002/api/quiz HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2Njg0MTUxNDksImV4cCI6MTY2ODQxNjM0OX0.ieJTJZLM2d_pR1IIm6WMztWQk7b1nrt-xL8wRDyelXI
+
+{
+  "room": "63597bf7ba6f8a0121e93f80",
+  "name": "test 1",
+  "description": "string",
+  "startDate":1667493545937,
+  "endDate":1667493545937,
+  "duration":1667493545937,
+  "countSubmission": 3
+}
+
+###
+//update quiz by quiz id
+PUT  http://localhost:3002/api/quiz/6363f2b2a1ad1da3899840fc HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJpYXQiOjE2Njc0OTQ0MDksImV4cCI6MTY2NzQ5NTYwOX0.MXf_fg9GMivMwKKxQRKhfWqsYHm5Oor6D2RtK3bPefU
+
+{
+  "name": "test 2",
+  "description": "string",
+  "startDate":1667493545937,
+  "duration":1667493545937
+}
+
+###
+//delete by quiz id
+DELETE http://localhost:3002/api/quiz/6363f2b2a1ad1da3899840fc HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJpYXQiOjE2Njc0OTQ0MDksImV4cCI6MTY2NzQ5NTYwOX0.MXf_fg9GMivMwKKxQRKhfWqsYHm5Oor6D2RtK3bPefU
+
+###
+//get all quizs in room by roomid
+GET http://localhost:3002/api/quiz/get-all-quizs-in-room/6345736928da9e182927f2f2 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJpYXQiOjE2Njc0OTQ0MDksImV4cCI6MTY2NzQ5NTYwOX0.MXf_fg9GMivMwKKxQRKhfWqsYHm5Oor6D2RtK3bPefU
+
+###
+//get by quiz by quiz id
+GET http://localhost:3002/api/quiz/6363f43a6ab7fc08a3e07a87 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2Njg0MDYwNDUsImV4cCI6MTY2ODQwNzI0NX0.Ec5LMgv6gwhPLGad0TE2IXXd0leiNVMuHBXI0b8vHtE
+
+
+###
+//create question
+// type = ONE or MULTIPLE
+POST http://localhost:3002/api/quiz/question HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2Njc5MzM1ODksImV4cCI6MTY2NzkzNDc4OX0.x_NlbOLI_mA_h86pvTgcXl9EACdOS9Avlil1LqTlokM
+
+{
+  "quiz": "6363f43a6ab7fc08a3e07a87",
+  "content": "1+1=?",
+  "type": "ONE",
+  "choices":[
+    { "content":"2", "isTrue": true },
+    { "content":"3", "isTrue": false },
+    { "content":"4", "isTrue": true }
+  ]
+}
+
+###
+//update question
+// type = ONE or MULTIPLE
+PUT  http://localhost:3002/api/quiz/question/6364008d1a29da93e5237bf4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2Njc5MzI5NjAsImV4cCI6MTY2NzkzNDE2MH0.Rq4rfEDGtCdh-5uugbCegCCus1DIKs8drZGpbfC52sk
+
+{
+  "quiz": "6363f43a6ab7fc08a3e07a87",
+  "content": "1+1=?",
+  "type": "MULTIPLE",
+  "choices": [
+    { "content":"5", "isTrue": false },
+    { "content":"3", "isTrue": false },
+    { "content":"4", "isTrue": true },
+    { "content":"2", "isTrue": true }
+  ]
+}
+
+###
+
+
+###
+//delete question by question id
+DELETE  http://localhost:3002/api/quiz/question/6364008d1a29da93e5237bf4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJpYXQiOjE2Njc0OTgwOTUsImV4cCI6MTY2NzQ5OTI5NX0.LhcGLbw3a50gW3s1qB0Lv5FlGPe5ZrwKgNlrCdVj3HI
+
+###
+//get all quetions in quiz id
+GET  http://localhost:3002/api/quiz/question/get-all-questions-in-quiz/6363f43a6ab7fc08a3e07a87 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2Njc5Nzc3MTAsImV4cCI6MTY2Nzk3ODkxMH0.aE7mksFYFkXvKtLYASCNFEwTIK204MFBYDDvSSckDQM
+
+###
+//Get by question id
+GET  http://localhost:3002/api/quiz/question/6364008e1a29da93e5237bf9 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJpYXQiOjE2Njc0OTgwOTUsImV4cCI6MTY2NzQ5OTI5NX0.LhcGLbw3a50gW3s1qB0Lv5FlGPe5ZrwKgNlrCdVj3HI
+
+
+//------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------Submission-----------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------//
+
+### create submission
+POST   http://localhost:3002/api/submission/6371eebef2458c5b45f4d197 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2Njg0MTUxNDksImV4cCI6MTY2ODQxNjM0OX0.ieJTJZLM2d_pR1IIm6WMztWQk7b1nrt-xL8wRDyelXI
+
+### get submission by id
+GET  http://localhost:3002/api/submission/636a4986c2e9949ebc6e17d5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NjgwMDc5MjYsImV4cCI6MTY2ODAwOTEyNn0.w8GjRiKC3ic3pCh9VkalSZ9S26egTyTXmogPUDrgyv8
+
+### get scores in quiz
+GET  http://localhost:3002/api/submission/scores/6363f43a6ab7fc08a3e07a87 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NjgwMDI1MjYsImV4cCI6MTY2ODAwMzcyNn0.Jue2YPWudKTZ2V43OsiltCrIRbvBaE0UgIYNGWG0520
+
+### get submissions in quiz
+GET  http://localhost:3002/api/submission/submissions-in-quiz/6363f43a6ab7fc08a3e07a87 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NjgwMDgyNzQsImV4cCI6MTY2ODAwOTQ3NH0.yxshKV-cjOMasRsEiU7lz7nc5dv8e2g3uFqLSzunfH4
+
+### get submission by quiz
+GET  http://localhost:3002/api/submission/submission-by-quiz/6363f43a6ab7fc08a3e07a87 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NjgwMDgyNzQsImV4cCI6MTY2ODAwOTQ3NH0.yxshKV-cjOMasRsEiU7lz7nc5dv8e2g3uFqLSzunfH4
+
+
+### submit answers
+POST   http://localhost:3002/api/submission/submit-answers/636a4986c2e9949ebc6e17d5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NjgwMDU4MTUsImV4cCI6MTY2ODAwNzAxNX0.nevn4AgXqbNQLtVtWi3ppCL21EqPUaotYME31U2qsEo
+
+{
+  "data":[
+    {
+      "questionId": "636aa5a39ebb2983fdc0241d",
+      "answers": [{
+        "answerId": "objectid",
+        "content": "string"
+        ],
+        "essay":"string"
+      }]
+    },
+  ]
+}
+
+
+
+//------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------File-----------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------//
+###
+//downloadfile
+GET  http://localhost:3002/api/file/download/630cffe9c3c1dd21edda11e6 HTTP/1.1
+Content-Type: application/json
+
+//------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------USER-----------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------//
+###
+GET  http://localhost:3002/api/auth/token HTTP/1.1
+Content-Type: application/json
+
+//Register
+###
+POST https://meetingbe.herokuapp.com/api/user/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "rexno02",
+    "password": "123123123",
+    "passwordConfirmation": "123123123",
+    "name": "than lam",
+    "phone":"0123123123",
+    "email": "18110142@student.hcmute.edu.vn"
+}
+
+//Login
+###
+POST http://localhost:3002/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "lamtvu",
+    "password": "123123123"
+}
+
+//get verify email
+###
+GET  http://localhost:3002/api/auth/get-verify-email HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzA3NDgyOGY5NTA5MTJmNTYzNTMwZmQiLCJpYXQiOjE2NjE0MjE2MTksImV4cCI6MTY2MTQyODgxOX0.wZptutXa8uf3NOmV1HaW6-EVJlmAGJ7dHg5mns7uEa4
+
+//get users
+//search bằng role và searchStr
+###
+GET http://localhost:3002/api/user?take=10&page=0&role=ADMIN&searchStr=
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY2NzgzOTg2NiwiZXhwIjoxNjY3ODQxMDY2fQ.CyptFclG5utAyIAfL5eBsvhRfBi_ZNwKo5398YY2870
+
+//update permission
+//ROLE = USER | ADMIN | HOST
+###
+PUT http://localhost:3002/api/user/update-permission
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY2NzgzOTg2NiwiZXhwIjoxNjY3ODQxMDY2fQ.CyptFclG5utAyIAfL5eBsvhRfBi_ZNwKo5398YY2870
+
+{
+  "ids": [
+    "6345735428da9e182927f2e9",
+    "6345784728da9e182927f368",
+    "6345786128da9e182927f373",
+    "6345b90aef023709c62c330c"
+  ],
+  "permission": {
+    "role": "USER"
+  }
+}
+
+//get person imformation
+###
+GET http://localhost:3002/api/user/get-detail  HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzA3NDgyOGY5NTA5MTJmNTYzNTMwZmQiLCJpYXQiOjE2NjE0MjE2MTksImV4cCI6MTY2MTQyODgxOX0.wZptutXa8uf3NOmV1HaW6-EVJlmAGJ7dHg5mns7uEa4
+
+//change infor (name, dob, phone)
+###
+PUT http://localhost:3002/api/user/change-infor HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTRkYzk2N2ZlMjI2Y2VmNWMwYzY4YzAiLCJpYXQiOjE2MzMxODE1ODUsImV4cCI6MTYzMzI2Nzk4NX0.hNng7Z11TrksOjtTBcv1imYYxkA4f7xm1O6S5FlQfB8
+
+{
+    "name": "naaaame",
+    "phone":"123111111111"
+}
+
+//change password
+###
+PUT http://localhost:3001/api/user/change-password HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+{
+    "oldPassword": "123123",
+    "password":"1231234",
+    "passwordConfirmation":"1231234"
+}
+
+//------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------Room-----------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------//
+//---------------------create room
+###
+POST http://localhost:3002/api/room HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1Nzg0NzI4ZGE5ZTE4MjkyN2YzNjgiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY2NzkxOTkzMCwiZXhwIjoxNjY3OTIxMTMwfQ.2Zo881E15ffntMrrxdbTl3KpLCaIvbRPfRjV3R6hVqk
+
+{
+    "name":"meeting room new",
+    "description": "ta",
+    "startDate": 123123123123,
+    "endDate": 193213123123
+}
+
+//---------------------get rooms
+//search bằng ownerId
+###
+GET http://localhost:3002/api/room?ownerId=6345784728da9e182927f368&take=10&page=0 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjEzMzc3MjgsImV4cCI6MTY2MTM0NDkyOH0.2Q_4Hey2RbnhIl70tV_0zzkHRbOXsy5SIj-4Cpt1_9s
+
+//---------------------ban room
+###
+PUT http://localhost:3002/api/room/ban-room/6345784728da9e182927f368 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjEzMzc3MjgsImV4cCI6MTY2MTM0NDkyOH0.2Q_4Hey2RbnhIl70tV_0zzkHRbOXsy5SIj-4Cpt1_9s
+
+//---------------------ban room
+###
+PUT http://localhost:3002/api/room/unban-room/6345784728da9e182927f368 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjEzMzc3MjgsImV4cCI6MTY2MTM0NDkyOH0.2Q_4Hey2RbnhIl70tV_0zzkHRbOXsy5SIj-4Cpt1_9s
+
+//---------------------delete room
+###
+DELETE  http://localhost:3001/api/room/61505c117b185a9a47f27145 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+//--------------------change room infor
+###
+PUT  http://localhost:3002/api/room/61505ebd67f9eb8d83106ff0 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjEzMzc3MjgsImV4cCI6MTY2MTM0NDkyOH0.2Q_4Hey2RbnhIl70tV_0zzkHRbOXsy5SIj-4Cpt1_9s
+
+{
+    "name":"room 02",
+    "description": "ta",
+    "roomType": 1,
+    "startDate": 123123123123,
+    "endDate": 141241231231
+}
+
+//-------------------get room by id
+###
+GET http://localhost:3002/api/room/614ff45687aa8816aaf86bfb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjE0MzE5OTQsImV4cCI6MTY2MTQzOTE5NH0.WcoxGKhLV5Z6W6BkBMc2B_3HKSBdHF_QXUCtA1bl9Ac
+
+//------------------get owed room
+###
+GET http://localhost:3002/api/room/owned-room HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjE0MzE5OTQsImV4cCI6MTY2MTQzOTE5NH0.WcoxGKhLV5Z6W6BkBMc2B_3HKSBdHF_QXUCtA1bl9Ac
+
+//------------------them member
+###
+POST http://localhost:3002/api/room/members/add-member/6306012033ee8c05c81fa14e HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWFiMTNmYmRhZDYwMGRmYzc0Mjc0OTYiLCJpYXQiOjE2NjEzNjAxNTcsImV4cCI6MTY2MTM2NzM1N30.gZSPNYA1hhhTjaY1iQ2zJOuOb4DYm6aFRkA2LRJTpvQ
+
+{
+    "userId":"61af68788f3c36c99d296160"
+}
+
+//------------------xoa member
+###
+DELETE  http://localhost:3001/api/room/members/remove-member/61502169dae138b5a0c04d8e HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+{
+    "userId":"614ff4bf87aa8816aaf86c07"
+}
+
+//------------------them array members
+###
+POST http://localhost:3001/api/room/members/add-members/6151d43bc93ac0467e79395d HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+{
+    "userIds":[
+        "6151d31fc93ac0467e793956",
+        "6151d313c93ac0467e793952",
+        "6151d30ac93ac0467e79394e"
+    ]
+}
+
+//------------------xoa arraymember
+###
+DELETE  http://localhost:3001/api/room/members/remove-members/61505cf767f9eb8d83106fee HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+{
+    "userId":"614ff4bf87aa8816aaf86c07"
+}
+
+//-----------------get invitedRoom
+###
+GET http://localhost:3002/api/room/invited-room?pageSize=2&pageIndex=0 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzA3NDgyOGY5NTA5MTJmNTYzNTMwZmQiLCJpYXQiOjE2NjE0MzE4MDQsImV4cCI6MTY2MTQzOTAwNH0.5QCTDJJLX5L4WkhdXH6_RhZXep4H7deCZNnAk_0DTpE
+
+
+//------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------Table-----------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------//
+
+    
+//-----------------create table 
+###
+POST http://localhost:3002/api/table HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzYzMTI1NTIsImV4cCI6MTYzNjM5ODk1Mn0.VFub7ca-YwzRya_cikwDsUyT2jTK36fmQxOc30ZomXM
+
+{
+    "room": "618825d4018803cfeb8e8601",
+    "name": "string",
+    "numberOfSeat": "4"
+}
+
+//-----------------delete table 
+###
+DELETE  http://localhost:3001/api/table/6151e6b2848a47879b5a3b88 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+//----------------get table by Id
+###
+GET   http://localhost:3001/api/table/6151e8089a545e4ee4d2e221 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
+
+//----------------get tables in class
+###
+GET   http://localhost:3001/api/table/get-by-room/6151d435c93ac0467e79395b HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxZDMwMWM5M2FjMDQ2N2U3OTM5NGEiLCJpYXQiOjE2MzI3NTI0MTksImV4cCI6MTYzMjgzODgxOX0.F0O8eaIsuUNmUobvvP2Wp31reuWaWJEfovgcqbwiHr4
